@@ -1,0 +1,13 @@
+.featureSection{
+    display: flex;
+    margin-top: 50px !important;
+    padding: 1rem;
+    color: #000 !important; 
+    background-color: chartreuse !important;
+    border: blue solid 2px;
+}
+
+.heading{
+    text-align: center;
+    text-decoration: underline blue;
+}
