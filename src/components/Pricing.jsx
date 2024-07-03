@@ -4,40 +4,41 @@ import './Pricing.css'
 
 const Pricing= ()=>{
     return(
-        <>
         <Card className='parentCard'>
             <Typography variant='h4' className='header'>
                 PRICING
             </Typography>
 
             <Card className='cardContent'>
-                <Card>
+                <Card className='actualCard'>
                     <Typography variant='h5'>
                         FREE
                     </Typography>
                 </Card>
 
-                <Card>
+                <Card className='actualCard'>
                     <Typography variant='h5'>
                         BASIC
                     </Typography>
                 </Card>
 
-                <Card>
+                <Card className='actualCard'>
                     <Typography variant='h5'>
                         PRO
-                        poppular
+                        
+                    </Typography>
+                    <Typography>
+                    (poppular)
                     </Typography>
                 </Card>
 
-                <Card>
+                <Card className='actualCard'>
                     <Typography  variant='h5'>
                         ENTERPRISE
                     </Typography>
                 </Card>
             </Card>
         </Card>
-        </>
     )
 }
 

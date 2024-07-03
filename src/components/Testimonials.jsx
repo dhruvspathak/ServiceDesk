@@ -5,10 +5,9 @@ import './Testimonials.css'
 
 const Testimonials= ()=>{
     return(
-        <>
         <Card className='testimonialSection'>
             <CardContent>
-                <Typography variant='h4' className='head'>
+                <Typography variant='h4' className='headIsTheBest'>
                     Testimonials of our Users
                 </Typography>
                 <Typography variant='h6'>
@@ -17,7 +16,6 @@ const Testimonials= ()=>{
                 </Typography>
             </CardContent>
         </Card>
-        </>
     )
 }
 

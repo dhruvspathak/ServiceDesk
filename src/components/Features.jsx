@@ -2,6 +2,9 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import { Typography } from '@mui/material'
 import './Features.css'
+import ticketImg from '../assets/flat-design-person-making-complain.png'
+import trackImg from '../assets/landing-page-template.png'
+import priorityImg from '../assets/freepik-export-20240703124357i6VW.png'
 
 const Features= ()=>{
     return(
@@ -20,6 +23,17 @@ const Features= ()=>{
                 Features for users to track the status of their tickets, receive updates, and provide additional
                 information if required
                 </Typography>
+                <div className='imgDiv'>
+                <div className='ticketImg'>
+                    <img src={ticketImg} alt='img' className='theImage' />
+                </div>
+                <div className='deskImage'>
+                    <img src={trackImg} alt='img' className='theImage' />
+                </div>
+                <div className='deskImagePriority'>
+                    <img src={priorityImg} alt='img' className='theImage' />
+                </div>
+                </div>
             </CardContent>
         </Card>
     )

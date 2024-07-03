@@ -2,12 +2,36 @@
     display: flex;
     margin-top: 50px !important;
     padding: 1rem;
-    color: #000 !important; 
-    background-color: chartreuse !important;
+    color: #fff !important; 
+    background-color: rgb(67, 104, 123) !important;
     border: blue solid 2px;
 }
 
 .heading{
     text-align: center;
     text-decoration: underline blue;
+}
+
+.ticketImg{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.theImage{
+    max-height: 400px;
+    max-width: 400px;
+    height: auto;
+}
+
+.imgDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.deskImgPriority{
+    display: flex;
+    max-height: 20px;
+    max-width: 30px;
 }

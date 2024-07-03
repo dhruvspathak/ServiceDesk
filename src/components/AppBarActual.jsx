@@ -5,12 +5,13 @@ import Container from '@mui/material/Container'
 import MenuItem from '@mui/material/MenuItem'
 import { Typography } from '@mui/material'
 import './AppBarActual.css'
+import {Link} from 'react-router-dom'
 
 const AppBarActual= ()=>{
 
     const scrollToSection = (sectionId) => {
         const sectionElement = document.getElementById(sectionId)
-        const offset = 64
+        const offset = 66
         if (sectionElement) {
             const targetScroll = sectionElement.offsetTop - offset
             window.scrollTo({
@@ -27,7 +28,7 @@ const AppBarActual= ()=>{
                 <Toolbar>
                     <Box className='boxes'>
                         <Box className='leftItems'>
-                            <Typography variant='h5'>
+                            <Typography variant='h5' onClick={() => scrollToSection('hero')}>
                                 deskUP!
                             </Typography>
                             <MenuItem onClick={() => scrollToSection('features')}>
@@ -47,12 +48,12 @@ const AppBarActual= ()=>{
                             </MenuItem>
                         </Box>
                         <Box className='rightItems'>
-                            <MenuItem>
+                            <MenuItem button='true' component={Link} to='/signIn'>
                                 <Typography>
                                     Sign-In
                                 </Typography>
                             </MenuItem>
-                            <MenuItem>
+                            <MenuItem button='true' component={Link} to='/signUp'>
                                 <Typography>
                                     Sign-Up
                                 </Typography>

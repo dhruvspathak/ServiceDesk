@@ -18,6 +18,11 @@
     display: flex;
     justify-content: space-evenly;
     height: 500px;
-    background-color: rgb(108, 108, 186) !important;
+    background-color: rgb(96, 96, 231) !important;
     border: black solid 2px;
+}
+
+.actualCard{
+    min-width: 270px;
+    text-align: center;
 }
