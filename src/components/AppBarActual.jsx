@@ -11,7 +11,7 @@ const AppBarActual= ()=>{
 
     const scrollToSection = (sectionId) => {
         const sectionElement = document.getElementById(sectionId)
-        const offset = 66
+        const offset = 67
         if (sectionElement) {
             const targetScroll = sectionElement.offsetTop - offset
             window.scrollTo({

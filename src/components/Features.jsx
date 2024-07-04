@@ -5,6 +5,8 @@ import './Features.css'
 import ticketImg from '../assets/flat-design-person-making-complain.png'
 import trackImg from '../assets/landing-page-template.png'
 import priorityImg from '../assets/freepik-export-20240703124357i6VW.png'
+import taskAssign from '../assets/giant-check-list.png'
+import kanban from '../assets/kanban-method-concept-illustration.png'
 
 const Features = () => {
     return (
@@ -56,8 +58,11 @@ const Features = () => {
                                 />
                             </Grid>
                             <Grid item>
-                                <Typography>Set your priorities, straight up. High priority tasks
-                                    have an average resolve time of less than 12hrs!
+                                <Typography>Set your priorities, straight up. 
+                                </Typography>
+                                <Typography>
+                                High priority tasks
+                                have an average resolve time of less than 12hrs!
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -76,7 +81,7 @@ const Features = () => {
                                 <Typography align="right">Assign tasks in less than 3 clicks</Typography>
                             </Grid>
                             <Grid item>
-                                <img src={ticketImg} alt='img' className='ticketImg'
+                                <img src={taskAssign} alt='img' className='ticketImg'
                                     style={{ width: '250px', height: '200px' }}
                                 />
                             </Grid>
@@ -88,7 +93,7 @@ const Features = () => {
                                 <Typography align="right">A kanban board to manage the To-Dos, In-Progress and Pending complaints</Typography>
                             </Grid>
                             <Grid item>
-                                <img src={trackImg} alt='img' className='trackImg'
+                                <img src={kanban} alt='img' className='trackImg'
                                     style={{ width: '250px', height: '200px' }}
                                 />
                             </Grid>

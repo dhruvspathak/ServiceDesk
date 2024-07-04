@@ -2,24 +2,23 @@
     display: flex;
     margin-top: 50px !important;
     padding: 1rem;
-    color: #000 !important;
+    color: #fff !important;
     flex-direction: column;
-    background-color: chartreuse !important;
+    background-color: rgb(17, 41, 73) !important;
     border: blue solid 2px;
 }
 
 .header{
     text-align: center;
-    text-decoration: underline blue;
 }
 
 .cardContent{
     margin-top: 2rem;
     display: flex;
-    justify-content: space-evenly;
-    height: 500px;
-    background-color: rgb(96, 96, 231) !important;
-    border: black solid 2px;
+    justify-content: space-between;
+    height: 470px;
+    background-color: rgb(17, 41, 73) !important;
+    border: greenyellow solid 3px;
 }
 
 .actualCard{

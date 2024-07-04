@@ -1,13 +1,11 @@
 .testimonialSection{
-    display: flex;
     margin-top: 50px !important;
     padding: 1rem;
-    color: #000 !important;
-    background-color: chartreuse !important;
+    color: #fff !important;
+    background-color: rgb(17, 41, 73) !important;
     border: blue solid 2px;
 }
 
 .headIsTheBest{
     text-align: center;
-    text-decoration: underline blue;
 }
