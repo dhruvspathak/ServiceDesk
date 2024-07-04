@@ -4,6 +4,8 @@ import App from './App.jsx'
 import SignIN from './pages/SignIn'
 import SignUP from './pages/SignUp'
 import CustomerLanding from './pages/customerPages/CustomerLanding.jsx'
+import AdminLanding from './pages/AdminPages/AdminLanding.jsx'
+import WorkerLanding from './pages/WorkerPages/WorkerLanding.jsx'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
@@ -14,6 +16,8 @@ root.render(
       <Route path="/signIn" element={<SignIN />} />
       <Route path='/signUp' element={<SignUP />} />
       <Route path='/custLand' element={<CustomerLanding />} />
+      <Route path='/adminLand' element={<AdminLanding />} />
+      <Route path='/workerLand' element={<WorkerLanding />} />
     </Routes>
   </Router>
 )

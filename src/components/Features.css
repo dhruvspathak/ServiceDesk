@@ -1,37 +1,35 @@
-.featureSection{
-    display: flex;
+.featureSection {
     margin-top: 50px !important;
     padding: 1rem;
     color: #fff !important; 
-    background-color: rgb(67, 104, 123) !important;
-    border: blue solid 2px;
+    background-color: rgb(17, 41, 73) !important;
+    border: blue solid 3px;
 }
 
-.heading{
+.heading {
     text-align: center;
-    text-decoration: underline blue;
+    margin-bottom: 2rem;
 }
 
-.ticketImg{
+.ticketImg, .trackImg, .priorityImg {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 3rem;
+}
+
+.content{
     display: flex;
-    width: 100%;
-    justify-content: flex-end;
+    flex-direction: column;
 }
 
-.theImage{
-    max-height: 400px;
-    max-width: 400px;
-    height: auto;
-}
-
-.imgDiv{
+.subTextContainer {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: flex-end; 
+    padding-left: 16px; 
 }
 
-.deskImgPriority{
-    display: flex;
-    max-height: 20px;
-    max-width: 30px;
+.subText {
+    text-align: left; 
+    margin-bottom: 8px;
 }

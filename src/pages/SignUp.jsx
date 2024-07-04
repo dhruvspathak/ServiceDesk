@@ -29,10 +29,11 @@ const SignUP = () => {
     password: '',
   })
 
-  const navigate= useNavigate()
+  const navigate = useNavigate()
 
   const handleChange = (event) => {
     setProfile(event.target.value)
+    console.log('Profile set to:', event.target.value)
   }
 
   const handleInputChange = (event) => {
@@ -52,8 +53,12 @@ const SignUP = () => {
       })
       console.log('User registered successfully:', user)
       // Add redirection logic here
-      if(profile===`Customer (I will use services)`){
+      if (profile === 'customer') {
         navigate('/custLand')
+      } else if (profile === 'administrator') {
+        navigate('/adminLand') // assuming /adminLand is the path for administrators
+      } else if (profile === 'worker') {
+        navigate('/workerLand') // assuming /workerLand is the path for workers
       }
     } catch (error) {
       console.error('Error signing up:', error)
@@ -110,7 +115,7 @@ const SignUP = () => {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={profile}
-                    label="profile"
+                    label="Profile"
                     onChange={handleChange}
                   >
                     <MenuItem value="customer">Customer (I will use services)</MenuItem>
