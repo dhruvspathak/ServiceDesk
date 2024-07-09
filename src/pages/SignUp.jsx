@@ -30,7 +30,7 @@ const SignUP = () => {
     })
 
     const navigate = useNavigate()
-
+    
     const handleChange = (event) => {
         setProfile(event.target.value)
         console.log('Profile set to:', event.target.value)

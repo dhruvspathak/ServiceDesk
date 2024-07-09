@@ -8,6 +8,10 @@ const Pricing= ()=>{
             <Typography variant='h4' className='header'>
                 PRICING
             </Typography>
+            <br></br>
+            <Typography variant='h6'>
+                If you are an organization, choose any one of the plans and begin immediately:
+            </Typography>
 
             <Card className='cardContent'>
                 <Card className='actualCard'>

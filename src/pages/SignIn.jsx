@@ -29,22 +29,6 @@ const SignIN = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }))
   }
 
-//   const handleSubmit = async (event) => {
-//     event.preventDefault()
-//     try {
-//       const { user } = await signInWithEmailAndPassword(auth, formData.email, formData.password)
-//       const userDoc = await getDoc(doc(db, 'users', user.uid))
-//       if (userDoc.exists()) {
-//         const userData = userDoc.data()
-//         console.log('User signed in successfully:', userData)
-//       } else {
-//         console.log('No such document!')
-//       }
-//     } catch (error) {
-//       console.error('Error signing in:', error)
-//     }
-//   }
-
 const handleSubmit = async (event) => {
     event.preventDefault()
     try {
@@ -55,7 +39,6 @@ const handleSubmit = async (event) => {
         console.log('User signed in successfully:', userData)
         
         const profile = userData.profile
-        // Redirect based on profile
         if (profile === 'customer') {
           navigate('/custLand')
         } else if (profile === 'administrator') {
