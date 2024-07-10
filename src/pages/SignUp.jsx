@@ -53,7 +53,7 @@ const SignUP = () => {
             })
             console.log('User registered successfully:', user)
             if (profile === 'customer') {
-                navigate('/custLand')
+                navigate(`/custLand?email=${formData.email}`)
             } else if (profile === 'administrator') {
                 navigate('/adminLand')
             } else if (profile === 'worker') {
@@ -126,7 +126,7 @@ const SignUP = () => {
                                             onChange={handleChange}
                                         >
                                             <MenuItem value="customer">Customer (I will use services)</MenuItem>
-                                            <MenuItem value="administrator">Administrator (I will handle services)</MenuItem>
+                                            <MenuItem value="administrator">Administrator (I manage the application)</MenuItem>
                                             <MenuItem value="worker">Worker (I will provide services)</MenuItem>
                                         </Select>
                                     </FormControl>
@@ -172,7 +172,7 @@ const SignUP = () => {
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link href="http://localhost:5173/signIn" variant="body2">
+                                <Link href="/SignIN" variant="body2">
                                     Already have an account? Sign in
                                 </Link>
                             </Grid>

@@ -1,3 +1,5 @@
+import Container from '@mui/material/Container'
+import { useState } from 'react'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -5,16 +7,14 @@ import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 import Link from '@mui/material/Link'
-import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
-import Container from '@mui/material/Container'
-import { useState } from 'react'
-import { auth, db } from '../firebase/firebaseConfig'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { doc, getDoc } from 'firebase/firestore'
+import { auth, db } from '../firebase/firebaseConfig'
 import { useNavigate } from 'react-router-dom'
+import { doc, getDoc } from 'firebase/firestore'
 
 const SignIN = () => {
   const [formData, setFormData] = useState({
@@ -22,51 +22,44 @@ const SignIN = () => {
     password: '',
   })
 
-  const navigate= useNavigate()
+  const navigate = useNavigate()
 
   const handleInputChange = (event) => {
     const { name, value } = event.target
     setFormData((prevData) => ({ ...prevData, [name]: value }))
   }
 
-const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     try {
       const { user } = await signInWithEmailAndPassword(auth, formData.email, formData.password)
       const userDoc = await getDoc(doc(db, 'users', user.uid))
-      if (userDoc.exists()) {
-        const userData = userDoc.data()
-        console.log('User signed in successfully:', userData)
-        
-        const profile = userData.profile
-        if (profile === 'customer') {
-          navigate('/custLand')
-        } else if (profile === 'administrator') {
-          navigate('/adminLand')
-        } else if (profile === 'worker') {
-          navigate('/workerLand')
-        }
-      } else {
-        console.log('No such document!')
+      const userProfile = userDoc.data().profile
+      console.log('User logged in successfully:', user)
+      if (userProfile === 'customer') {
+        navigate(`/custLand?email=${formData.email}`)
+      } else if (userProfile === 'administrator') {
+        navigate('/adminLand')
+      } else if (userProfile === 'worker') {
+        navigate('/workerLand')
       }
     } catch (error) {
       console.error('Error signing in:', error)
     }
   }
-  
 
-  const redirectHome= ()=>{
+  const redirectHome = () => {
     navigate('/')
-}
+  }
 
   return (
     <>
-    <Button variant="outlined" onClick={redirectHome}>
-            BACK TO HOME
-        </Button>
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <Box
+     <Button variant="outlined" onClick={redirectHome}>
+             BACK TO HOME
+         </Button>
+     <Container component="main" maxWidth="xs">
+       <CssBaseline />
+       <Box
         sx={{
           marginTop: 8,
           display: 'flex',

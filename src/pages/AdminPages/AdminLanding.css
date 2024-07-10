@@ -1,25 +1,17 @@
-.container{
+.AppbarAdmin{
+    background-color: chartreuse !important;    
+}
+
+.containerAdmin{
     display: flex;
     margin-left: 1px !important;
-    background-color: chartreuse;
     color: black;
 }
 
-.boxes{
+.boxesAdmin{
     display: flex;
     flex-direction: row;
-    gap: 100%;
+    gap: 1rem;
     justify-content: space-between;
     align-items: center;
-}
-
-.leftItems{
-    display: flex;
-    gap:10%;
-}
-
-.rightItems{
-    display: flex;
-    margin-left: 10%;
-    gap: 10%;
 }

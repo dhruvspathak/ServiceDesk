@@ -1,70 +1,67 @@
-import { useEffect, useState } from 'react';
-import { db } from '../../firebase/firebaseConfig'; 
-import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import './ViewTicket.css';
+import { useEffect, useState } from 'react'
+import { db } from '../../firebase/firebaseConfig'
+import { collection, query, where, getDocs, deleteDoc, doc } from 'firebase/firestore'
+import { useLocation } from 'react-router-dom'
+import { Box, Typography, Card, CardContent, Button } from '@mui/material'
+import './ViewTicket.css'
 
 const ViewTicket = () => {
-    const [tickets, setTickets] = useState([]);
+    const [tickets, setTickets] = useState([])
+    const location = useLocation()
+    const searchParams = new URLSearchParams(location.search)
+    const userEmail = searchParams.get('email')
 
     useEffect(() => {
         const fetchTickets = async () => {
-            try {
-                const querySnapshot = await getDocs(collection(db, 'tickets'));
-                const ticketsData = querySnapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
-                setTickets(ticketsData);
-            } catch (error) {
-                console.error('Error fetching tickets:', error);
-            }
-        };
-
-        fetchTickets();
-    }, []);
-
-    const handleDelete = async (id) => {
-        try {
-            await deleteDoc(doc(db, 'tickets', id));
-            setTickets(tickets.filter(ticket => ticket.id !== id));
-            console.log('Ticket deleted successfully:', id);
-        } catch (error) {
-            console.error('Error deleting ticket:', error);
+            const q = query(collection(db, 'tickets'), where('email', '==', userEmail))
+            const querySnapshot = await getDocs(q)
+            const ticketsArray = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+            setTickets(ticketsArray)
         }
-    };
+
+        fetchTickets()
+    }, [userEmail])
+
+    const handleDelete = async (ticketId) => {
+        try {
+            await deleteDoc(doc(db, 'tickets', ticketId))
+            setTickets(tickets.filter(ticket => ticket.id !== ticketId))
+            console.log('Ticket deleted successfully:', ticketId)
+        } catch (error) {
+            console.error('Error deleting ticket:', error)
+        }
+    }
 
     return (
-        <>
-            <Box component="section" sx={{ p: 2, maxWidth: 500, margin: '0 auto', mt:1 }} className='containerBox'>
-                {tickets.map((ticket) => (
-                    <Box key={ticket.id} sx={{ p: 2, border: '2px solid gray', marginBottom: 2, borderRadius: 2 }} className='viewBoxTop'>
-                        <Typography variant='body1'><strong>Description:</strong></Typography>
-                        <Typography variant='body1' className='descriptionText'>{ticket.description}</Typography>
-                        <Typography variant='body1' className='categoryText'><strong>Category:</strong> {ticket.category}</Typography>
-                        <Typography variant='body1' className='priorityText'><strong>Priority:</strong> {ticket.priority}</Typography>
-                        <Button
-                            variant="outlined"
-                            color="secondary"
-                            onClick={() => handleDelete(ticket.id)}
-                            sx={{ mt: 2 }}
-                        >
-                            Delete
-                        </Button>
-                        <Button
-                            variant="outlined"
-                            color="secondary"
-                            sx={{ mt: 2 }}
-                        >
-                            Track
-                        </Button>
-                    </Box>
-                ))}
-            </Box>
-        </>
-    );
-};
+        <Box component="section" sx={{ p: 2, maxWidth: 500, mx: 'auto' }}>
+            <Typography variant='h5' sx={{ mb: 2, textAlign: 'center' }}>
+                Your Tickets
+            </Typography>
+            {tickets.length === 0 ? (
+                <Typography sx={{ mb: 2, textAlign: 'center' }}>no complaints huh</Typography>
+            ) : (
+                tickets.map((ticket) => (
+                    <Card key={ticket.id} sx={{ mb: 2 }}>
+                        <CardContent>
+                            <Typography variant='body1'><strong>Description:</strong></Typography>
+                            <Typography variant='body1' className='descriptionText'>{ticket.description}</Typography>
+                            <Typography variant='body1' className='categoryText'><strong>Category:</strong> {ticket.category}</Typography>
+                            <Typography variant='body1' className='priorityText'><strong>Priority:</strong> {ticket.priority}</Typography>
+                            <Typography variant='body1' className='statusText'><strong>Status:</strong> {ticket.status}</Typography>
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                onClick={() => handleDelete(ticket.id)}
+                                sx={{ mt: 2 }}
+                            >
+                                Delete Ticket
+                            </Button>
+                        </CardContent>
+                    </Card>
+                ))
+            )}
+        </Box>
+    )
+}
 
-export default ViewTicket;
+export default ViewTicket

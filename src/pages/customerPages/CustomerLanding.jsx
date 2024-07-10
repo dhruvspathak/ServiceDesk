@@ -4,7 +4,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Container from '@mui/material/Container'
 import MenuItem from '@mui/material/MenuItem'
 import { Typography } from '@mui/material'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import RaiseTicket from './RaiseTicket'
 import ViewTicket from './ViewTicket'
 import './CustomerLanding.css'
@@ -22,7 +22,6 @@ const CustomerLanding = () => {
             })
         }
     }
-
 
     return (
         <>
@@ -44,12 +43,7 @@ const CustomerLanding = () => {
                                     Raise Ticket
                                 </Typography>
                             </MenuItem>
-                            <MenuItem onClick={() => scrollToSection('pricing')}>
-                                <Typography>
-                                    Track Ticket
-                                </Typography>
-                            </MenuItem>
-                            <Typography variant='h5' sx={{ml:45}}>
+                            <Typography variant='h5' sx={{ml:50}}>
                                 Customer
                             </Typography>
                             <Typography variant='h5'>
@@ -69,6 +63,7 @@ const CustomerLanding = () => {
                 <section id='newTicket' className='newTicket'>
                     <RaiseTicket />
                 </section>
+                <br></br>
             </div>
         </>
     )

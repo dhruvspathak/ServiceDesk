@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-width: 600px;
+    min-width: 500px;
 }
 
 .viewBoxTop {
@@ -20,18 +20,11 @@
 .categoryText {
     word-wrap: break-word;
     white-space: pre-wrap; 
-    max-width: 64ch;
+    max-width: 10ch;
 }
 
 .priorityText {
     word-wrap: break-word;
     white-space: pre-wrap; 
-    max-width: 5ch;
-}
-
-.statusText {
-    word-wrap: break-word;
-    white-space: pre-wrap; 
     max-width: 10ch;
-    text-decoration: underline !important;
 }

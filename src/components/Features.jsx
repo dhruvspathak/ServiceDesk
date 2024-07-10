@@ -7,6 +7,9 @@ import trackImg from '../assets/landing-page-template.png'
 import priorityImg from '../assets/freepik-export-20240703124357i6VW.png'
 import taskAssign from '../assets/giant-check-list.png'
 import kanban from '../assets/kanban-method-concept-illustration.png'
+import resolve from '../assets/Wavy_Bus-06_Single-09.jpg'
+import number1 from '../assets/10317227_27872.jpg'
+import assign from '../assets/6596995_3333237.jpg'
 
 const Features = () => {
     return (
@@ -106,7 +109,7 @@ const Features = () => {
                                 </Typography>
                             </Grid>
                             <Grid item>
-                                <img src={priorityImg} alt='img' className='priorityImg'
+                                <img src={resolve} alt='img' className='priorityImg'
                                     style={{ width: '250px', height: '200px' }}
                                 />
                             </Grid>
@@ -121,38 +124,24 @@ const Features = () => {
                     <Grid item xs={12} md={4}>
                         <Grid container spacing={2} alignItems="center">
                             <Grid item>
-                                <img src={ticketImg} alt='img' className='ticketImg'
+                                <img src={number1} alt='img' className='ticketImg'
                                     style={{ width: '250px', height: '200px' }}
                                 />
                             </Grid>
                             <Grid item>
-                                <Typography>Raising a complaint ticket has never been easier</Typography>
+                                <Typography>All associated workers are top 1% in their industry</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid item xs={12} md={4}>
                         <Grid container spacing={2} alignItems="center">
                             <Grid item>
-                                <img src={trackImg} alt='img' className='trackImg'
+                                <img src={assign} alt='img' className='trackImg'
                                     style={{ width: '250px', height: '200px' }}
                                 />
                             </Grid>
                             <Grid item>
-                                <Typography>Get realtime updates of the status of your complaint</Typography>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                        <Grid container spacing={2} alignItems="center">
-                            <Grid item>
-                                <img src={priorityImg} alt='img' className='priorityImg'
-                                    style={{ width: '250px', height: '200px' }}
-                                />
-                            </Grid>
-                            <Grid item>
-                                <Typography>Set your priorities, straight up. High priority tasks
-                                    have an average resolve time of less than 12hrs!
-                                </Typography>
+                                <Typography>Managing assignment of task is as easy as it can get</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
