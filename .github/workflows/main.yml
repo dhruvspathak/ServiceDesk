@@ -38,7 +38,7 @@ jobs:
         with:
           command: web
           config: ./localhost_config.yaml
-          base_url: http://ind.ast.checkmarx.net
+          base_url: https://ind.ast.checkmarx.net
           environment_id: 83c1c65d-db18-475c-a1a6-1fe068b38020
           output: ${{ github.workspace }}/output_fold
       - name: reclaim output directory
