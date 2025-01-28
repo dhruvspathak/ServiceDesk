@@ -24,18 +24,21 @@ jobs:
       actions: read
     runs-on: self-hosted
     steps: 
-      - name: checkout 
+      - name: Checkout 
         uses: actions/checkout@v2
-      - name: create directory
-        run: mkdir ${{ github.workspace }}/output_fold
-      - name: change directory owner
-        run:  sudo chown -R 1000:1000 ${{ github.workspace }}
+
+      - name: Create Directory
+        run: mkdir ${{ github.workspace }}\output_fold
+
+      - name: Reclaim Directory Permissions
+        run: icacls ${{ github.workspace }}\output_fold /grant "Everyone:(OI)(CI)F" /T
+
       - name: Checkmarx DAST Github Action
         uses: Checkmarx/dast-github-action@v2.3.0
         env:
-          CX_APIKEY: ${{secrets.CX_APIKEY}}
+          CX_APIKEY: ${{ secrets.CX_APIKEY }}
         with:
-          # The type of scan to preform (web, api)
+          # The type of scan to perform (web, api)
           command: web
           # The path to the ZAP configuration file
           config: ./localhost_config.yaml
@@ -43,13 +46,11 @@ jobs:
           base_url: https://ind.ast.checkmarx.net
           # The environment ID previously created in the Frontend
           environment_id: 83c1c65d-db18-475c-a1a6-1fe068b38020
-          output: ${{ github.workspace }}/output_fold #./output
-      - name: Reclaim output directory
-        if: always()
-        run: sudo chown -R 1001:1001 ${{ github.workspace }}/output_fold
+          output: ${{ github.workspace }}\output_fold # ./output
+
       - uses: actions/upload-artifact@v3
         if: always()
         name: Upload Logs
         with:
           name: report
-          path: ${{ github.workspace }}/output_fold
+          path: ${{ github.workspace }}\output_fold
