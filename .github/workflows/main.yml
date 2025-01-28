@@ -1,15 +1,14 @@
 name: localhost_scan
-
 on: 
   pull_request:
-    branches: 
-      -main
-  push:
-    branches: 
-      -main
+    branches:
+      - main
+  push: 
+    branches:
+      - main
 
-  workflow_dispatch:
-  
+  workflow_dispatch: 
+
 permissions: 
   contents: read
 
@@ -19,12 +18,12 @@ concurrency:
 
 jobs:
   build:
-    permissions:
+    permissions: 
       contents: read
       security-events: write
       actions: read
     runs-on: self-hosted
-    steps:
+    steps: 
       - name: checkout 
         uses: actions/checkout@v2
       - name: create directory
@@ -36,12 +35,16 @@ jobs:
         env:
           CX_APIKEY: ${{secrets.CX_APIKEY}}
         with:
+          # The type of scan to preform (web, api)
           command: web
+          # The path to the ZAP configuration file
           config: ./localhost_config.yaml
+          # The baseURL for the Checkmarx One Servers
           base_url: https://ind.ast.checkmarx.net
+          # The environment ID previously created in the Frontend
           environment_id: 83c1c65d-db18-475c-a1a6-1fe068b38020
-          output: ${{ github.workspace }}/output_fold
-      - name: reclaim output directory
+          output: ${{ github.workspace }}/output_fold #./output
+      - name: Reclaim output directory
         if: always()
         run: sudo chown -R 1001:1001 ${{ github.workspace }}/output_fold
       - uses: actions/upload-artifact@v3
@@ -50,4 +53,3 @@ jobs:
         with:
           name: report
           path: ${{ github.workspace }}/output_fold
-        
