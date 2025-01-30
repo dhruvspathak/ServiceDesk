@@ -22,7 +22,7 @@ jobs:
       contents: read
       security-events: write
       actions: read
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps: 
       - name: Checkout 
         uses: actions/checkout@v2
@@ -41,7 +41,7 @@ jobs:
           # The type of scan to perform (web, api)
           command: web
           # The path to the ZAP configuration file
-          config: ./localhost_config.yaml
+          config: ./gin_juice.yaml
           # The baseURL for the Checkmarx One Servers
           base_url: https://ind.ast.checkmarx.net
           # The environment ID previously created in the Frontend
