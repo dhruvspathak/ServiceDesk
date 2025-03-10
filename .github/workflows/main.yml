@@ -25,7 +25,7 @@ jobs:
         # The environment ID previously created in the Frontend
         environment_id: bd462e37-c712-440a-9e0c-7984b09d5252
         # The path to generate the output (optional)
-        output: ./checkmarx_output
+        output: "{github.workspace}/output_fold"
         # The log level for the logs (optional, default is info)
         log_level: debug
         # Set to true in order to print the logs to stdout (optional, default is false)
