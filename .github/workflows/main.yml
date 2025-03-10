@@ -1,56 +1,33 @@
-name: localhost_scan
+name: Checkmarx DAST Pipeline
+
 on: 
-  pull_request:
-    branches:
-      - main
-  push: 
-    branches:
-      - main
-
-  workflow_dispatch: 
-
-permissions: 
-  contents: read
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # No trigger here, this pipeline will not run automatically.
+  # You can add a manual trigger like the following if needed:
+   workflow_dispatch:
 
 jobs:
-  build:
-    permissions: 
-      contents: read
-      security-events: write
-      actions: read
+  checkmarx-dast:
     runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout 
-        uses: actions/checkout@v2
 
-      - name: Create Directory
-        run: mkdir ${{ github.workspace }}\output_fold
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Reclaim Directory Permissions
-        run: icacls ${{ github.workspace }}\output_fold /grant "Everyone:(OI)(CI)F" /T
-
-      - name: Checkmarx DAST Github Action
-        uses: Checkmarx/dast-github-action@v2.3.0
-        env:
-          CX_APIKEY: ${{ secrets.CX_APIKEY }}
-        with:
-          # The type of scan to perform (web, api)
-          command: web
-          # The path to the ZAP configuration file
-          config: ./gin_juice.yaml
-          # The baseURL for the Checkmarx One Servers
-          base_url: https://ind.ast.checkmarx.net
-          # The environment ID previously created in the Frontend
-          environment_id: 83c1c65d-db18-475c-a1a6-1fe068b38020
-          output: ${{ github.workspace }}\output_fold # ./output
-
-      - uses: actions/upload-artifact@v3
-        if: always()
-        name: Upload Logs
-        with:
-          name: report
-          path: ${{ github.workspace }}\output_fold
+    - name: Checkmarx DAST Github Action
+      uses: Checkmarx/dast-github-action@v2.3.0
+      with:
+        # The type of scan to perform (web, api)
+        command: web
+        # The path to the ZAP configuration file
+        config: ./gin_juice.yaml
+        # The base URL for the Checkmarx One Servers
+        base_url: https://ind.ast.checkmarx.net
+        # The environment ID previously created in the Frontend
+        environment_id: bd462e37-c712-440a-9e0c-7984b09d5252
+        # The path to generate the output (optional)
+        output: ./checkmarx_output
+        # The log level for the logs (optional, default is info)
+        log_level: debug
+        # Set to true in order to print the logs to stdout (optional, default is false)
+        verbose: true
+        
