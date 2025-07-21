@@ -17,7 +17,7 @@ jobs:
       - name: Run Checkmarx CxFlow Scan
         uses: checkmarx-ts/checkmarx-cxflow-github-action@v2.3
         with:
-          checkmarx_url: http://dhruvp-lt
+          checkmarx_url: http://192.168.110.89
           team: /CxServer/MyTeam
           checkmarx_username: ${{ secrets.CX_USERNAME }}
           checkmarx_password: ${{ secrets.CX_PASSWORD }}
