@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Checkmarx Scan (Credential-based Authentication)
         run: |
-          $cliPath = "runCxConsole.cmd"
+          $cliPath = "runCxConsole"
           $scanPath = "$PWD\ServiceDesk"  # This is where your code is
 
           & $cliPath Scan `
