@@ -1,0 +1,31 @@
+name: Checkmarx SAST-On-Prem
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  checkmarx:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Checkmarx CxFlow Scan
+        uses: checkmarx-ts/checkmarx-cxflow-github-action@v2.3
+        with:
+          checkmarx_url: http://dhruvp-lt
+          team: /CxServer/MyTeam
+          checkmarx_username: ${{ secrets.CX_USERNAME }}
+          checkmarx_password: ${{ secrets.CX_PASSWORD }}
+          #checkmarx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
+          project: ServiceDesk-GHA
+          app: MyApp
+          preset: Checkmarx Default
+          #break_build: true
+          bug_tracker: Sarif
+          incremental: true
+          #params: "--scan-scope source"
