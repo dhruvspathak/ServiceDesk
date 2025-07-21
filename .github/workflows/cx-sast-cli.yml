@@ -1,0 +1,37 @@
+name: Checkmarx CLI Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checkmarx-scan:
+    runs-on: windows-latest
+
+    steps:
+      - name: Download Checkmarx CLI Plugin
+        run: |
+          Invoke-WebRequest -Uri "https://download.checkmarx.com/9.5.0/Plugins/CxConsolePlugin-1.1.39.zip" -OutFile "CxConsolePlugin.zip"
+
+      - name: Unzip Checkmarx CLI Plugin
+        run: |
+          Expand-Archive -Path "CxConsolePlugin.zip" -DestinationPath "$PWD\CxConsole"
+
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: Run Checkmarx Scan (Credential-based Authentication)
+        run: |
+          $cliPath = "$PWD\CxConsole\runCxConsole.cmd"
+          $scanPath = "$PWD\ServiceDesk"  # This is where your code is
+
+          & $cliPath Scan `
+            -v `
+            -CxServer "http://192.168.110.89/" `
+            -ProjectName "ServiceDesk-GHA" `
+            -CxUser "dhruvsp" `
+            -CxPassword "GrindAndWin@10" `
+            -LocationType folder `
+            -LocationPath "$scanPath" `
+            -preset "Checkmarx Default"
